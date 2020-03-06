@@ -1,16 +1,17 @@
 extern crate rand;
+
 use rand::Rng;
 
 use std::io;
 
 fn main() {
-    let p_number:u8 = rand::thread_rng().gen_range(1,7);
+    let p_number: u8 = rand::thread_rng().gen_range(1, 7);
     println!("Type some number");
     let mut input = String::new();
     io::stdin().read_line(&mut input).unwrap();
 
-    let n: u8 = match input.trim().parse() {
-        Ok(n) => n,
+    let n: u8 = match input.trim().parse::<u8>() {
+        Ok(n) => n % 6 + 1,
         Err(_) => 1
     };
 
